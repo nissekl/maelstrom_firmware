@@ -101,6 +101,17 @@ export class CoproService {
     );
   }
 
+  getThrusterCurrents():Observable<number[]> {
+    return this.command(12).pipe(
+      map(x => {
+        console.log(x);
+        x=x.map(a=> a/25);
+        console.log(x);
+        return x;
+      })
+    );
+  }
+
   private command(...args: number[]): Observable<number[]> {
     return this.http.post<number[]>(COPRO_URL, [...args]).pipe(
       catchError(err => {

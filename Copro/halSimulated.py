@@ -107,7 +107,7 @@ class ESCBoard():
 	def getCurrents():
 		current_vals = []
 		for i in range(8):
-			current_vals.append(int(random.uniform(0,10)*25))
+			current_vals.append(random.uniform(0,10))
 		return current_vals
 
 	def stopThrusters(self):

@@ -17,18 +17,23 @@ export class ElectricityComponent implements OnDestroy, OnInit {
   private alive = true;
 
   listData = [
-    { name: '3.3v', amps: 0 },
-    { name: '5v', amps: 0 },
-    { name: '12v', amps: 0 }
+    { name: 'HSA ',amps: 0 },
+    { name: 'HSF', amps: 0 },
+    { name: 'VSF', amps: 0 },
+    { name: 'VSA', amps: 0 },
+    { name: 'HPF', amps: 0 },
+    { name: 'HPA', amps: 0 },
+    { name: 'VPF', amps: 0 },
+    { name: 'VPA', amps: 0 },
   ];
   chartData: ElectricityChart[] = [];
   amperage: number;
   @Input() amperageEmitter: EventEmitter<number>;
   @Input('logicCurrents')
   set logicCurrents(currents: number[]) {
-    this.listData[0].amps = currents[0];
-    this.listData[1].amps = currents[1];
-    this.listData[2].amps = currents[2];
+    for(var i = 0; i < currents.length; i++) {
+      this.listData[i].amps = currents[i];
+    }
   }
 
   newData = new EventEmitter<any>();

@@ -84,10 +84,10 @@ export class DashboardComponent implements OnDestroy {
 
 		this.getBattery();
 		this.getTemperature();
-		this.getLogicCurrents();
+		this.getThrusterCurrents();
 		this.getDepthValue();
 		this.coproService.coproDisconnected.subscribe(() =>
-			alert("Copro disconnected")
+			 alert("Copro disconnected")
 		);
 	}
 
@@ -111,14 +111,14 @@ export class DashboardComponent implements OnDestroy {
 		setTimeout(() => this.getTemperature(), 1000);
 	}
 
-	getLogicCurrents() {
+	getThrusterCurrents() {
 		this.coproService
-			.getLogicCurrents()
+			.getThrusterCurrents()
 			.subscribe(i => {
-				//in order of 3.3, 5, 12
 				this.logicCurrents = i;
+				
 			});
-		setTimeout(() => this.getLogicCurrents(), 1000);
+		setTimeout(() => this.getThrusterCurrents(), 1000);
 	}
 
 	getDepthValue() {
